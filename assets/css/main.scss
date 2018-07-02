@@ -4,8 +4,12 @@ $medBlue: #4eb8dd;
 $lightBlue: #ddf1fa;
 $inputBG: #f3fafd;
 
+/*font size*/
+$inputDesktop: 27px;
+$inputMobile: 20px;
+
 /*screen sizes*/
-$break-small: 800px;
+$breakSmall: 800px;
 
 html {
   width: 100%;
@@ -29,7 +33,7 @@ form {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-width: $break-small;
+  max-width: $breakSmall;
   background-color: #FFF;
   margin: 0;
   padding: 80px;
@@ -37,8 +41,9 @@ form {
   border: solid 1px #DDD;
   border-radius: .5em;
   font-family: 'Source Sans Pro', sans-serif;
-  @media screen and (max-width: $break-small) {
-    padding: 10px;
+  @media screen and (max-width: $breakSmall) {
+    padding: 90px 10px 10px;
+    height: 700px;
   }
 
   .svgContainer {
@@ -51,6 +56,13 @@ form {
     border: solid 2.5px #3A5E77;
     overflow: hidden;
     pointer-events: none;
+
+    @media screen and (max-width: $breakSmall) {
+      width: 170px;
+      height: 170px;
+      border: solid 1.5px #3A5E77;
+    }
+
     div {
       position: relative;
       width: 100%;
@@ -71,6 +83,13 @@ form {
   .inputGroup {
     margin-top: 50px;
     height: 65px;
+
+    @media screen and (max-width: $breakSmall) {
+      padding: 20px;
+      height: 150px;
+      margin-top: 20px;
+    }
+
     input {
       vertical-align: bottom;
       padding: 0 12px 0;
@@ -81,15 +100,22 @@ form {
       -webkit-appearance: none;
       height: 100%;
       width: 470px;
-      font-size: 1.55em;
-      color: #353538;
+      font-size: $inputDesktop;
+      color: $darkBlue;
       font-weight: 600;
       font-family: inherit;
       transition: box-shadow .2s linear, border-color .25s ease-out;
       &:focus {
         outline: none;
         border: solid 2px #4eb8dd;
-        border-right-width: 0;
+      }
+
+      @media screen and (max-width: $breakSmall) {
+        width: 100%;
+        border-radius: 4px;
+        border: solid 1.5px $darkBlue;
+        height: 50px;
+        font-size: $inputMobile;
       }
     }
 
@@ -102,13 +128,22 @@ form {
       box-shadow: none;
       height: 100%;
       width: 158px;
-      font-size: 1.55em;
+      font-size: $inputDesktop;
       color: #FFF;
       font-weight: 600;
       font-family: inherit;
       transition: background-color .2s ease-out;
       &:hover, &:active {
         background-color: $darkBlue;
+      }
+
+      @media screen and (max-width: $breakSmall) {
+        margin-top: 25px;
+        width: 100%;
+        border-radius: 4px;
+        border: solid 1.5px $darkBlue;
+        height: 50px;
+        font-size: $inputMobile;
       }
     }
   }
