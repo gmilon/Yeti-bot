@@ -1,28 +1,23 @@
 <template>
   <div class="chatbar">
-    <div class="inputGroup inputGroup1">
-      <label for="email1">Email</label>
-      <input type="text" id="email" class="email" maxlength="256"/>
-      <p class="helper helper1">email@domain.com</p>
-      <span class="indicator"></span>
+    <div class="inputGroup">
+      <input
+        type="text"
+        maxlength="256"
+        @blur="changeBody('normal')"
+        @focus="changeBody('eyesCovered')"
+      />
+      <button id="send" type="button">Send</button>
     </div>
-    <div class="inputGroup inputGroup2">
-      <label for="password">Password</label>
-      <input type="password" id="password" class="password"/>
     </div>
-    <div class="inputGroup inputGroup3">
-      <button id="login">Log in</button>
-    </div>
-  </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   export default {
     name: "ChatBar",
     methods: {
-      handleFocus () {
-        this.$store.yeti.dispatch('toggleSidebar')
-      }
+      ...mapActions(['changeBody'])
     }
   }
 </script>

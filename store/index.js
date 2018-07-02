@@ -11,6 +11,6 @@ const createStore = () => {
     },
     strict: true
   })
-}
+};
 
 export default createStore

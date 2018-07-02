@@ -131,7 +131,6 @@
 
 <script>
   import {TweenMax} from 'gsap'
-  import YStates from '../store/yeti-states'
 
   export default {
     name: "Yeti",
@@ -141,17 +140,17 @@
           x: -93,
           y: 220,
           rotation: 105,
-          transformOrigin: "top left"
+          transformOrigin: "top left",
         });
         TweenMax.set('.armR', {
           x: -93,
           y: 220,
           rotation: -105,
-          transformOrigin: "top right"
+          transformOrigin: "top right",
         });
       },
 
-      coverEyes() {
+      coverEyes: function () {
         TweenMax.to('.armL', .45, {
             x: -93,
             y: 2,
@@ -223,11 +222,16 @@
     },
     watch: {
       body: (body) => {
-        // todo: refactor this
-        if (body === YStates.NORMAL) {
-          this.initState();
-        }else if (body === YStates.EYESCOVERED) {
-          this.coverEyes();
+        // can't access to methods using this.methodName
+        const self = this.a.methods;
+
+        switch (body) {
+          case 'eyesCovered':
+            self.coverEyes();
+            break;
+          default:
+            self.resetFace();
+            self.initState();
         }
       }
     }

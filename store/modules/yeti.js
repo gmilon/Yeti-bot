@@ -1,8 +1,6 @@
-import * as body from '../yeti-states'
-
 // initial state
 const state = {
-  body: body.states.NORMAL
+  body: 'normal' //TODO: try to export global vars with right way (using plugins, mixins, simple export ??)
 };
 
 // getters
@@ -19,9 +17,9 @@ const mutations = {
 
 // actions
 const actions = {
-  changeBody({commit, state}) {
-    commit('changeBody')
-  }
+  changeBody({commit, state}, newState) {
+    commit('changeBody', newState)
+  },
 };
 
 export default {
