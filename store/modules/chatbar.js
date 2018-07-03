@@ -10,6 +10,9 @@ const getters = {
 
 // mutations
 const mutations = {
+  setCursorPosition (state, newState) {
+    state.cursorPosition = newState
+  }
 };
 
 // actions

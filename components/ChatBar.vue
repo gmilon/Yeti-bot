@@ -6,6 +6,7 @@
         ref="input"
         maxlength="256"
         v-model="intent"
+        @input="updateCusror"
         @blur="changeBody('normal')"
         @focus="changeBody('eyesCovered')"
         @keyup.enter="send()"
@@ -26,16 +27,20 @@
     },
     methods: {
       ...mapActions(['changeBody']),
-      ...mapMutations(['changeContent']),
+      ...mapMutations(['changeContent', 'setCursorPosition']),
       send() {
         const intentLength = this.intent.length;
         this.changeContent(this.intent);
+        this.setCursorPosition(0);
         this.intent = '';
         this.changeBody('normal');
         setTimeout(() => {
           this.changeContent('')
         }, 1500+(intentLength*50))
       },
+      updateCusror(e) {
+        this.setCursorPosition(e.target.value.length)
+      }
     }
   }
 </script>
