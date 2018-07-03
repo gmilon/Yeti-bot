@@ -131,6 +131,7 @@
 
 <script>
   import {TweenMax} from 'gsap'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: "Yeti",
@@ -216,9 +217,7 @@
       this.initState();
     },
     computed: {
-      body () {
-        return this.$store.state.yeti.body;
-      }
+      ...mapGetters(['body'])
     },
     watch: {
       body: (body) => {
@@ -230,6 +229,7 @@
             self.coverEyes();
             break;
           default:
+            self.uncoverEyes();
             self.resetFace();
             self.initState();
         }

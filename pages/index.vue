@@ -1,20 +1,23 @@
 <template>
   <section class="container">
-    <form>
+    <div class="form">
+      <speech-bubble/>
       <yeti/>
       <chat-bar/>
-    </form>
+    </div>
   </section>
 </template>
 
 <script>
   import Yeti from '~/components/Yeti.vue'
   import ChatBar from '~/components/ChatBar.vue'
+  import SpeechBubble from '~/components/SpeechBubble.vue'
 
   export default {
     components: {
       Yeti,
-      ChatBar
+      ChatBar,
+      SpeechBubble,
     },
   }
 </script>

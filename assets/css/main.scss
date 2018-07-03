@@ -27,7 +27,61 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-form {
+.speech-bubble {
+  position: absolute;
+  width: 300px;
+  margin-left: -50px;
+  margin-top: 20px;
+  z-index: 99;
+
+  @media screen and (max-width: $breakSmall) {
+    width: 140px;
+    margin-left: 5px;
+    margin-top: -40px;
+  }
+
+  .box {
+    width: 100%;
+    margin: 50px auto;
+    background: #4eb8dd;
+    padding: 20px;
+    text-align: center;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    position: relative;
+    @media screen and (max-width: $breakSmall) {
+      font-weight: 600;
+      font-size: 10px;
+      padding: 12px;
+    }
+  }
+
+  .sb1:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 25px solid #4eb8dd;
+    border-right: 25px solid transparent;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid #4eb8dd;
+    right: -30px;
+    top: 7px;
+    @media screen and (max-width: $breakSmall) {
+      font-weight: 600;
+      font-size: 12px;
+      border-left: 8px solid #4eb8dd;
+      border-right: 8px solid transparent;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid #4eb8dd;
+      right: -15px;
+      top: 18px;
+    }
+  }
+}
+
+.form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -108,6 +162,7 @@ form {
       &:focus {
         outline: none;
         border: solid 2px #4eb8dd;
+        border-right-width: 0;
       }
 
       @media screen and (max-width: $breakSmall) {
@@ -116,6 +171,10 @@ form {
         border: solid 1.5px $darkBlue;
         height: 50px;
         font-size: $inputMobile;
+        &:focus {
+          outline: none;
+          border: solid 2px #4eb8dd;
+        }
       }
     }
 
@@ -147,4 +206,12 @@ form {
       }
     }
   }
+
+  // annimations
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
   }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+}

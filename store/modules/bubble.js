@@ -1,15 +1,18 @@
 // initial state
 const state = {
-  cursorPosition: 0
+  content: ''
 };
 
 // getters
 const getters = {
-  cursorPosition: state => state.cursorPosition
+  getContent: state => state.content,
 };
 
 // mutations
 const mutations = {
+  changeContent (state, newState) {
+    state.content = newState
+  }
 };
 
 // actions
