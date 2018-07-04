@@ -182,28 +182,32 @@
         TweenMax.to(['.face', '.eyebrow'], 1, {x: 0, y: 0, skewX: 0, ease: Expo.easeOut});
         TweenMax.to(['.outerEarL', '.outerEarR', '.earHairL', '.earHairR', '.hair'], 1, {x: 0, y: 0, scaleY: 1, ease: Expo.easeOut});
       },
+
+      updateBody() {
+        switch (this.body) {
+          case 'eyesCovered':
+            this.coverEyes();
+            break;
+          default:
+            this.uncoverEyes();
+            this.resetFace();
+            this.initState();
+        }
+      },
+
+      updateCursor() {
+        console.log('update cursor position');
+      }
     },
     mounted: function () {
       this.initState();
     },
     computed: {
-      ...mapGetters(['body'])
+      ...mapGetters(['body', 'cursorPosition'])
     },
     watch: {
-      body: (body) => {
-        // can't access to methods using this.methodName
-        const self = this.a.methods;
-
-        switch (body) {
-          case 'eyesCovered':
-            self.coverEyes();
-            break;
-          default:
-            self.uncoverEyes();
-            self.resetFace();
-            self.initState();
-        }
-      }
-    }
+      body: 'updateBody',
+      cursorPosition: 'updateCursor',
+    },
   }
 </script>
