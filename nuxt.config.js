@@ -27,6 +27,10 @@ module.exports = {
     '@/assets/css/main.css',
   ],
 
+  /*
+  ** plugins
+  */
+  plugins: ['~/plugins/mixins'],
 
   /*
   ** Build configuration
